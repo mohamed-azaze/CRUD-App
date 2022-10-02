@@ -1,0 +1,287 @@
+/* Start Display */
+/* ///////////////// */
+/* Start Flex */
+.d-flex {
+  display: flex;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-end {
+  align-items: flex-end;
+}
+.flex-dir-column {
+  flex-direction: column;
+}
+/* End Flex */
+/* ///////////////// */
+/* Start Block */
+.d-block {
+  display: block;
+}
+/* End Block */
+/* ///////////////// */
+/* Start Grid */
+.d-grid {
+  display: grid;
+}
+.gap-15 {
+  gap: 15px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-25 {
+  gap: 25px;
+}
+/* End Grid */
+/* ///////////////// */
+/* End Display */
+/* ///////////////// */
+/* Start Position */
+.pos-relative {
+  position: relative;
+}
+.pos-absolute {
+  position: absolute;
+}
+.pos-fixed {
+  position: fixed;
+}
+.top-0 {
+  top: 0;
+}
+.right-0 {
+  right: 0;
+}
+.bottom-0 {
+  bottom: 0;
+}
+.left-0 {
+  left: 0;
+}
+/* Start Position */
+/* ///////////////// */
+/* Start Padding & Margin */
+/* ///////////////// */
+/* Start Padding */
+.p-0 {
+  padding: 0;
+}
+.p-5 {
+  padding: 5px;
+}
+.p-10 {
+  padding: 10px;
+}
+.p-15 {
+  padding: 15px;
+}
+.pt-0 {
+  padding-top: 0;
+}
+.pt-5 {
+  padding-top: 5px;
+}
+.pt-15 {
+  padding-top: 15px;
+}
+.pr-0 {
+  padding-right: 0;
+}
+.pr-5 {
+  padding-right: 5px;
+}
+.pr-15 {
+  padding-right: 15px;
+}
+.pb-0 {
+  padding-bottom: 0;
+}
+.pb-5 {
+  padding-bottom: 5px;
+}
+.pb-15 {
+  padding-bottom: 15px;
+}
+.pl-0 {
+  padding-left: 0;
+}
+.pl-5 {
+  padding-left: 5px;
+}
+.pl-15 {
+  padding-left: 15px;
+}
+
+/* End Padding */
+/* ///////////////// */
+/* Start Margin */
+.m-0 {
+  margin: 0;
+}
+.m-10 {
+  margin: 10px;
+}
+.m-15 {
+  margin: 15px;
+}
+.mt-0 {
+  margin-top: 0;
+}
+
+.mr-0 {
+  margin-right: 0;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.ml-0 {
+  margin-left: 0;
+}
+
+/* End Margin */
+/* ///////////////// */
+/* End Padding & Margin */
+
+/* ///////////////// */
+/* Start Background & Color */
+/* Start Background */
+.bg-transparent {
+  background-color: transparent;
+}
+.bg-00005 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.bg-eee {
+  background-color: #eee;
+}
+/* End Background */
+/* Start Color */
+.c-fff {
+  color: #fff;
+}
+/* End Color */
+/* End Background & Color*/
+/* ///////////////// */
+/* Start Width & Height */
+.w-full {
+  width: 100%;
+}
+
+.w-300 {
+  width: 300px;
+}
+
+.h-full {
+  height: 100%;
+}
+.h-100 {
+  height: 100px;
+}
+/* End Width & Height */
+/* ///////////////// */
+/* Start Font & Text */
+/* Start Font */
+
+.fz-15 {
+  font-size: 15px;
+}
+.fz-20 {
+  font-size: 20px;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+/* End Font */
+/* Start Text */
+.txt-center {
+  text-align: center;
+}
+
+.txt-uppe {
+  text-transform: uppercase;
+}
+/* End Text */
+
+/* End Font */
+/* ///////////////// */
+/* Start Border & Border-radius  */
+/* Start Border */
+.border-none {
+  border: none;
+}
+.border-1-eee {
+  border: 1px solid #eee;
+}
+.border-2-eee {
+  border: 2px solid #eee;
+}
+/* Top */
+.bordert-1-ddd {
+  border-top: 1px solid #ddd;
+}
+.bordert-2-fff {
+  border-top: 2px solid #fff;
+}
+/* Top */
+/* Bottom */
+.borderb-1-ddd {
+  border-bottom: 1px solid #ddd;
+}
+.borderb-2-fff {
+  border-bottom: 2px solid #fff;
+}
+/* Bottom */
+
+/* End Border */
+/* Start Border-radius  */
+.border-r-5 {
+  border-radius: 5px;
+}
+/* End Border-radius  */
+/* End Border & Border-readio  */
+/* ///////////////// */
+/* Start collection */
+.ol-none {
+  outline: none;
+}
+
+.arrow-none::-webkit-inner-spin-button {
+  /* remove arrow up and down form input[type="number"]*/
+  appearance: none;
+}
+
+.place-none:focus::placeholder {
+  opacity: 0;
+}
+/* End collection */
+/* ///////////////// */
+/* Start Components */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* End Components */

@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans Mono", monospace;
+  background-image: url(../img/pexels-pixabay-276514.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.input-section {
+  width: 800px;
+  min-height: 300px;
+  margin: 50px auto 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+input[type="number"],
+input[type="text"],
+input[type="submit"],
+input[type="search"],
+input[type="reset"] {
+  background-color: #b6b37e;
+  padding: 6px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+  border: 3px solid #7d86c1;
+}
+
+input[type="number"]::placeholder,
+input[type="text"]::placeholder,
+input[type="search"]::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: normal;
+}
+
+.input-group > .span {
+  border: 2px solid #7d86c1;
+}
+
+.view-data {
+  /* background-color: #403874; */
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 800px;
+  margin: 0 auto;
+}
+table {
+  border-spacing: 0;
+}
+
+table thead td {
+  border-top: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+  border-left: 1px solid #eee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+table tbody td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+table tbody td > button {
+  padding: 3px 5px;
+  cursor: pointer;
+  background-color: #7d86c1;
+  border: none;
+  border-radius: 5px;
+}
+
+table thead td:last-child,
+table tbody td:last-child {
+  border-right: 1px solid #ddd;
+}
+
+.pupop {
+  width: 400px;
+  min-height: 100px;
+}
+
+.pupop-container {
+  display: none;
+}

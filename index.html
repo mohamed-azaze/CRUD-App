@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/framework.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <title>CRUDS Project</title>
+  </head>
+  <body>
+    <section
+      class="pupop-container pos-absolute top-0 left-0 bg-00005 w-full h-full flex-center"
+    >
+      <div class="pupop bg-eee border-r-5">
+        <div class="text txt-center p-15">
+          <h3 class="mb-10">Delete Products</h3>
+          <p class="message">Are you sure you want Delete All Product</p>
+        </div>
+        <div class="button txt-center pb-15 flex-center gap-15 pr-15 pl-15">
+          <input
+            class="ol-none border-r-5 place-none fz-15 fw-bold"
+            type="submit"
+            value="yse"
+          />
+          <input
+            class="ol-none border-r-5 place-none fz-15 fw-bold"
+            type="submit"
+            value="no"
+          />
+        </div>
+      </div>
+    </section>
+    <section class="input-section pt-15 pb-15">
+      <header>
+        <h1 class="txt-center c-fff">CRUDS</h1>
+        <p class="txt-uppe txt-center c-fff fw-bold">
+          Create Read Update Delete Search
+        </p>
+      </header>
+      <div class="form flex-center">
+        <form>
+          <div class="input-group m-15">
+            <input
+              class="product-name w-full ol-none border-none arrow-none border-r-5 place-none fz-15"
+              type="text"
+              placeholder="Product Name"
+            />
+          </div>
+          <div class="input-group flex-center gap-15 m-15">
+            <div class="input">
+              <input
+                class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15"
+                type="number"
+                placeholder="Price"
+              />
+            </div>
+            <div class="input">
+              <input
+                class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15"
+                type="number"
+                placeholder="Tax"
+              />
+            </div>
+            <div class="input">
+              <input
+                class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15"
+                type="number"
+                placeholder="Ads"
+              />
+            </div>
+            <div class="input">
+              <input
+                class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15"
+                type="number"
+                placeholder="Discount"
+              />
+            </div>
+            <div class="total pr-15 pl-15 border-r-5 pt-5 pb-5 border-2-eee">
+              <span class="d-block fw-bold c-fff">Total:0</span>
+            </div>
+          </div>
+          <div class="input-group m-15">
+            <input
+              class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15"
+              type="number"
+              placeholder="Count"
+            />
+          </div>
+          <div class="input-group m-15">
+            <input
+              class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15"
+              type="text"
+              placeholder="Category"
+            />
+          </div>
+          <div class="input-group flex-center gap-15 m-15">
+            <div class="input w-full">
+              <input
+                class="w-full ol-none border-r-5 place-none fz-15 fw-bold"
+                type="submit"
+                value="Create"
+              />
+            </div>
+            <div class="input w-full">
+              <input
+                class="w-full ol-none arrow-none border-r-5 place-none fz-15 fw-bold"
+                type="reset"
+                value="Reset"
+              />
+            </div>
+          </div>
+          <div class="input-group flex-center gap-15 m-15">
+            <div class="input w-full">
+              <input
+                class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15 fw-bold"
+                type="search"
+                placeholder="Search By Product Name"
+              />
+            </div>
+            <div class="input w-full">
+              <input
+                class="w-full ol-none border-none arrow-none border-r-5 place-none fz-15 fw-bold"
+                type="search"
+                placeholder="Search By Category"
+              />
+            </div>
+          </div>
+          <div class="input-group m-15">
+            <input
+              class="delete-all w-full ol-none arrow-none border-r-5 place-none fz-15 fw-bold"
+              type="submit"
+              value="DeleteAll(100)"
+            />
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="view-data">
+      <table class="w-full p-15">
+        <thead>
+          <tr class="title-row c-fff txt-center">
+            <td>ID</td>
+            <td>Title</td>
+            <td>Price</td>
+            <td>Tax</td>
+            <td>Ads</td>
+            <td>Discount</td>
+            <td>Total</td>
+            <td>Category</td>
+            <td>Update</td>
+            <td>Delete</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
