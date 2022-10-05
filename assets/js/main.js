@@ -25,6 +25,7 @@ const resetBtn = document.querySelector('[value="Reset"]');
 /////////////////////////////////////////////////////////////////////////
 let productId = false;
 let productIdx;
+// let finalArr = []
 /////////////////////////////////////////////////////////////////////////
 let deleteFilter = true;
 let searchByCategory = true;
@@ -40,9 +41,17 @@ if (localStorage.getItem("products")) {
     viewProduct(localStorageData)
 };
 ////////////////////////////////////////////////////////
-// Reset Inputs and Total Price 
+// Reset Inputs and Total Price
 resetBtn.addEventListener("click", () => {
-    totalSpan.innerHTML = `Total:0`
+    const localStorageData = JSON.parse(localStorage.getItem("products"));
+    totalSpan.innerHTML = `Total:0`;
+    deleteFilter = true;
+    searchByCategory = true;
+    searchProductName.value = " ";
+    searchCategory.value = " ";
+    document.querySelectorAll("tbody tr").forEach(ele => ele.remove());
+    viewProduct(localStorageData)
+    deleteAllBtn.setAttribute("value", `DeleteAll (${localStorageData.length})`)
 });
 ////////////////////////////////////////////////////////
 // get Total Price Function
@@ -54,13 +63,13 @@ document.addEventListener("keyup", () => {
 createBtn.addEventListener("click", (e) => {
     e.preventDefault()
     const productData = {
-        productName: titleInput.value,
+        productName: titleInput.value.toLowerCase(),
         price: priceInput.value,
         tax: taxInput.value ? taxInput.value : 0,
         ads: adsInput.value ? adsInput.value : 0,
         disc: discountInput.value ? discountInput.value : 0,
         total: +priceInput.value + +taxInput.value + +adsInput.value - +discountInput.value,
-        category: categoryInput.value,
+        category: categoryInput.value.toLowerCase(),
     }
     if (!productId) {
         if (productData.productName === "" || productData.price === "" || productData.category === "") {
@@ -81,7 +90,6 @@ createBtn.addEventListener("click", (e) => {
         productId = false;
         createBtn.setAttribute("value", "Create")
     }
-    // Clear Inputs
     titleInput.value = "";
     priceInput.value = "";
     taxInput.value = "";
@@ -120,23 +128,62 @@ function showData() {
 function viewProduct(arr) {
     const tableTbody = document.querySelector("tbody")
     document.querySelectorAll("tbody tr").forEach(ele => ele.remove());
-    arr.forEach((product, index) => {
-        tableTbody.innerHTML += `<tr class="title-row p-15 c-fff txt-center">
-                                    <td>${index + 1}</td>
-                                    <td>${product.productName}</td>
-                                    <td>${product.price}</td>
-                                    <td>${product.tax}</td>
-                                    <td>${product.ads}</td>
-                                    <td>${product.disc}</td>
-                                    <td>${product.total}</td>
-                                    <td>${product.category}</td>
-                                    <td><button onClick="updateData(${index})">update</button></td>
-                                    <td><button onClick="deleteProduct(${index})">Delete</button></td>
-                                </tr>`
-    })
+    if (deleteFilter) {
+        arr.forEach((product, indx) => {
+            tableTbody.innerHTML += `<tr class="title-row p-15 c-fff txt-center">
+                                        <td>${indx + 1}</td>
+                                        <td>${product.productName}</td>
+                                        <td>${product.price}</td>
+                                        <td>${product.tax}</td>
+                                        <td>${product.ads}</td>
+                                        <td>${product.disc}</td>
+                                        <td>${product.total}</td>
+                                        <td>${product.category}</td>
+                                        <td><button onClick="updateData(${indx})">update</button></td>
+                                        <td><button onClick="deleteProduct(${indx})">Delete</button></td>
+                                    </tr>`
+        })
+    } else {
+        for (let i = 0; i < arr.length; i++) {
+            if (!searchByCategory) {
+                if (arr[i].category.startsWith(searchCategory.value.toLowerCase())) {
+                    tableTbody.innerHTML += `<tr class="title-row p-15 c-fff txt-center">
+                                                <td>${i + 1}</td>
+                                                <td>${arr[i].productName}</td>
+                                                <td>${arr[i].price}</td>
+                                                <td>${arr[i].ads}</td>
+                                                <td>${arr[i].tax}</td>
+                                                <td>${arr[i].disc}</td>
+                                                <td>${arr[i].total}</td>
+                                                <td>${arr[i].category}</td>
+                                                <td><button onClick="updateData(${i})">update</button></td>
+                                                <td><button onClick="deleteProduct(${i})">Delete</button></td>
+                                            </tr>`
+                }
+            } else {
+
+                if (arr[i].productName.startsWith(searchProductName.value.toLowerCase())) {
+                    tableTbody.innerHTML += `<tr class="title-row p-15 c-fff txt-center">
+                                                <td>${i + 1}</td>
+                                                <td>${arr[i].productName}</td>
+                                                <td>${arr[i].price}</td>
+                                                <td>${arr[i].ads}</td>
+                                                <td>${arr[i].tax}</td>
+                                                <td>${arr[i].disc}</td>
+                                                <td>${arr[i].total}</td>
+                                                <td>${arr[i].category}</td>
+                                                <td><button onClick="updateData(${i})">update</button></td>
+                                                <td><button onClick="deleteProduct(${i})">Delete</button></td>
+                                             </tr>`
+                }
+            }
+        }
+        deleteAllBtn.setAttribute("value", `DeleteAll (${tableTbody.children.length})`);
+    }
 }
+
 ////////////////////////////////////////////////////////
-// Update Data Function 
+// Update Data Function
 function updateData(idx) {
     productId = true
     productIdx = idx
@@ -155,17 +202,23 @@ function updateData(idx) {
     categoryInput.value = product[0].category;
 }
 ////////////////////////////////////////////////////////
-// Delete Product Function 
+// Delete Product Function
 function deleteProduct(idx) {
     const localStorageData = JSON.parse(localStorage.getItem("products"));
-    localStorageData.splice(idx, 1)
-    localStorage.removeItem("products")
-    localStorage.setItem("products", JSON.stringify(localStorageData))
-    showData()
-    deleteAll()
+    if (deleteFilter) {
+        localStorageData.splice(idx, 1)
+        localStorage.removeItem("products")
+        localStorage.setItem("products", JSON.stringify(localStorageData))
+        viewProduct(JSON.parse(localStorage.getItem("products")))
+    } else {
+        localStorageData.splice(idx, 1)
+        localStorage.removeItem("products")
+        localStorage.setItem("products", JSON.stringify(localStorageData))
+        viewProduct(localStorageData)
+    }
 }
 ////////////////////////////////////////////////////////
-// Delete All Products Function 
+// Delete All Products Function
 function deleteAll() {
     deleteAllBtn.style.display = "none"
     if (localStorage.getItem("products")) {
@@ -181,20 +234,17 @@ function deleteAll() {
                     let finalArr = []
                     if (!searchByCategory) {
                         const localStorageData = JSON.parse(localStorage.getItem("products"));
-                        var arr = localStorageData.filter(ele => !ele.category.startsWith(searchCategory.value))
+                        var arr = localStorageData.filter(ele => !ele.category.startsWith(searchCategory.value.toLowerCase()))
                         finalArr.push(...arr)
                     } else {
                         const localStorageData = JSON.parse(localStorage.getItem("products"));
-                        var arr = localStorageData.filter(ele => !ele.productName.startsWith(searchProductName.value))
+                        var arr = localStorageData.filter(ele => !ele.productName.startsWith(searchProductName.value.toLowerCase()))
                         finalArr.push(...arr)
                     }
                     yesBtn.addEventListener("click", () => {
                         localStorage.removeItem("products")
-                        console.log(finalArr)
                         localStorage.setItem("products", JSON.stringify(finalArr))
-                        viewProduct(finalArr)
                         if (finalArr.length > 0) {
-
                             deleteAllBtn.setAttribute("value", `DeleteAll (${finalArr.length})`)
                         } else {
                             deleteAllBtn.style.display = "none";
@@ -204,6 +254,7 @@ function deleteAll() {
                         searchByCategory = true;
                         searchProductName.value = ""
                         searchCategory.value = ""
+                        viewProduct(finalArr)
                     })
                     noBtn.addEventListener("click", () => {
                         pupop.style.display = "none"
@@ -234,16 +285,16 @@ function deleteAll() {
 searchProductName.addEventListener("input", () => {
     deleteFilter = false;
     const localStorageData = JSON.parse(localStorage.getItem("products"));
-    const filterProducts = localStorageData.filter(ele => ele.productName.startsWith(searchProductName.value))
-    deleteAllBtn.setAttribute("value", `DeleteAll (${filterProducts.length})`);
-    viewProduct(filterProducts)
+    viewProduct(localStorageData)
+
 })
 ////////////////////////////////////////////////////////
 searchCategory.addEventListener("input", () => {
     deleteFilter = false;
     searchByCategory = false;
     const localStorageData = JSON.parse(localStorage.getItem("products"));
-    const filterProductName = localStorageData.filter(ele => ele.category.startsWith(searchCategory.value))
-    deleteAllBtn.setAttribute("value", `DeleteAll (${filterProductName.length})`)
-    viewProduct(filterProductName)
+    viewProduct(localStorageData)
+    if (!searchCategory.value) {
+        searchByCategory = true;
+    }
 })
